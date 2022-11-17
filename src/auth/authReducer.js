@@ -1,7 +1,6 @@
 const userKey = "_mymoney_user";
 const INITIAL_STATE = {
-    user: { name: "victor", email: "victorteste@gmail.com" },
-};
+  user: JSON.parse(localStorage.getItem(userKey)),};
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
