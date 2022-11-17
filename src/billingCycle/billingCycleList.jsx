@@ -40,8 +40,8 @@ class BillingCycleList extends Component {
               <th>Nome</th>
               <th>Mês</th>
               <th>Ano</th>
-              <th>Açoes</th>
-            </tr>
+              <th className="table-actions">Açoes</th>
+             </tr>
           </thead>
           <tbody>{this.renderRows()}</tbody>
         </table>
