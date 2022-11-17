@@ -2,8 +2,10 @@ import axios from "axios";
 import { toastr } from "react-redux-toastr";
 import { reset as reseteForm, initialize } from "redux-form";
 import { showTabs, selectTab } from "../common/tab/tabActions";
+
 const BASE_URL = "http://localhost:3003/api";
-const INITIAL_VALUES = {};
+const INITIAL_VALUES = { credits: [{}] };
+
 export function getList() {
   const request = axios.get(`${BASE_URL}/billingCycles`);
   return {
@@ -11,15 +13,12 @@ export function getList() {
     payload: request,
   };
 }
-
 export function create(values) {
   return submit(values, "post");
 }
-
 export function update(values) {
   return submit(values, "put");
 }
-
 function submit(values, method) {
   return (dispatch) => {
     const id = values._id ? values._id : "";
@@ -40,11 +39,9 @@ export function showUpdate(billingCycle) {
     initialize("billingCycleForm", billingCycle),
   ];
 }
-
 export function remove(values) {
   return submit(values, "delete");
 }
-
 export function showDelete(billingCycle) {
   return [
     showTabs("tabDelete"),
@@ -52,7 +49,6 @@ export function showDelete(billingCycle) {
     initialize("billingCycleForm", billingCycle),
   ];
 }
-
 export function init() {
   return [
     showTabs("tabList", "tabCreate"),
