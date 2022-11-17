@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { reduxForm, Field } from "redux-form";
-
 import { init } from "./billingCycleActions.js";
 import labelAndInput from "../common/form/labelAndInput.jsx";
 
 class BillingCycleForm extends Component {
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, readOnly } = this.props;
+
     return (
       <form role="form" onSubmit={handleSubmit}>
         <div className="box-body">
@@ -18,6 +18,7 @@ class BillingCycleForm extends Component {
             label="Nome"
             cols="12 4"
             placeholder="Informe o nome"
+            readOnly={readOnly}
           />
           <Field
             name="month"
@@ -25,8 +26,21 @@ class BillingCycleForm extends Component {
             type="number"
             label="Mês"
             cols="12 4"
-            placeholder="Informe o nome"
-            <button type="submit" className="btn btn-primary">
+            placeholder="Informe o Mês"
+            readOnly={readOnly}
+          />
+          <Field
+            name="year"
+            component={labelAndInput}
+            type="number"
+            label="Ano"
+            cols="12 4"
+            placeholder="Informe o Ano"
+            readOnly={readOnly}
+          />
+        </div>
+        <div className="box-footer">
+          <button type="submit" className="btn btn-primary">
             Submit
           </button>
           <button
